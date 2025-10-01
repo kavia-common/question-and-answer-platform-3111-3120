@@ -19,5 +19,6 @@ def write_openapi():
     with open(output_path, "w") as f:
         json.dump(openapi_schema, f, indent=2)
 
+
 if __name__ == "__main__":
     write_openapi()
