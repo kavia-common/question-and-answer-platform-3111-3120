@@ -11,7 +11,17 @@ from src.api.schemas import UserCreate, UserOut, Token
 router = APIRouter(prefix="/auth", tags=["Auth"])
 
 
-@router.post("/signup", response_model=UserOut, summary="User signup", description="Create a new user account.")
+@router.post(
+    "/signup",
+    response_model=UserOut,
+    summary="User signup",
+    description="Create a new user account.",
+    responses={
+        200: {"description": "User created", "model": UserOut},
+        400: {"description": "Email already registered"},
+        422: {"description": "Validation error"},
+    },
+)
 def signup(user_in: UserCreate, db: Session = Depends(get_db)):
     """
     PUBLIC_INTERFACE
