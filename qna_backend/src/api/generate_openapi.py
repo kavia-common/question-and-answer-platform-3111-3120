@@ -9,7 +9,9 @@ Utility script to generate the latest OpenAPI schema into interfaces/openapi.jso
 Run this after modifying routes to keep the interface spec up to date.
 """
 
+# PUBLIC_INTERFACE
 def write_openapi():
+    """Generate and write OpenAPI schema JSON to interfaces/openapi.json."""
     openapi_schema = app.openapi()
     output_dir = "interfaces"
     os.makedirs(output_dir, exist_ok=True)
